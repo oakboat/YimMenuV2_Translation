@@ -27,6 +27,7 @@ jobs:
         cp ../*.py .
         cp ../*.TTF .
         cp ../*.diff .
+        cp ../*.json .
         git apply stage.diff
         python font.py
         mv MainFont.cpp src/game/frontend/fonts -Force
@@ -37,12 +38,12 @@ jobs:
       with:
         arch: amd64
 
-    - name: Configure CMake
+    - name: Generate CMake project
       run: |
         cd YimMenuV2
         cmake -D CMAKE_BUILD_TYPE=Release -S. -Bbuild -G Ninja
         
-    - name: Build
+    - name: Build 64bit release DLL
       run: |
         cd YimMenuV2
         cmake --build ./build --config Release --target YimMenuV2 --
