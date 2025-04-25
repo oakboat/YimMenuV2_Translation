@@ -44,7 +44,7 @@ jobs:
         
     - name: Build
       run: |
-        cd YimMenuV2/build
+        cd YimMenuV2
         cmake --build ./build --config Release --target YimMenuV2 --
 
     - name: Rename DLL to YimMenuV2-dev-{GITHUB_SHA}.dll
