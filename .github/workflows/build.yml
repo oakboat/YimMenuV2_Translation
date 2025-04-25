@@ -27,10 +27,9 @@ jobs:
         cp ../*.py .
         cp ../*.TTF .
         cp ../*.diff .
-        git apply stage
         git apply stage.diff
         python font.py
-        mv MainFont.cpp src/game/frontend/fonts
+        mv MainFont.cpp src/game/frontend/fonts -Force
         python translate.py
         
     - name: Configure CMake
