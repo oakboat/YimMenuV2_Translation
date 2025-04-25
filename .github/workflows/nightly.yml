@@ -4,7 +4,8 @@ on:
   schedule:
     - cron: '0 0 * * *'  # 每天 UTC 时间午夜运行
   workflow_dispatch:      # 允许手动触发
-
+permissions:
+  contents: write 
 jobs:
   create-release:
     name: Upload Nightly Build
@@ -53,6 +54,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: nightly-latest
+        overwrite: true
         name: Nightly Build
         body: |
           Automatic nightly build of YimMenu
