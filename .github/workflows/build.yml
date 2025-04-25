@@ -43,7 +43,7 @@ jobs:
         cmake --build . --config Release --target YimMenu -- /m
         
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: YimMenu-Build
         path: YimMenuV2/build/Release/YimMenu.dll
