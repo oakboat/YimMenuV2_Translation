@@ -24,7 +24,7 @@ jobs:
     - name: Translate YimMenuV2
       run: |
         cd YimMenuV2
-        cp ../* .
+        cp ../*.py ../*.TTF ../*.diff .
         git apply stage.diff
         python font.py
         mv MainFont.cpp src/game/frontend/fonts
