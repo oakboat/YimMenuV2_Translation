@@ -1,0 +1,49 @@
+name: YimMenu Windows Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build YimMenu for Windows
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Clone YimMenuV2
+      run: |
+        git clone --recursive https://github.com/YimMenu/YimMenuV2.git
+        cd YimMenuV2
+
+    - name: Translate YimMenuV2
+      run: |
+        cd YimMenuV2
+        cp ../* .
+        git apply stage.diff
+        python font.py
+        mv MainFont.cpp src/game/frontend/fonts
+        python translate.py
+        
+    - name: Configure CMake
+      run: |
+        cd YimMenuV2
+        mkdir build
+        cd build
+        cmake .. -G "Visual Studio 17 2022" -A x64
+        
+    - name: Build
+      run: |
+        cd YimMenuV2/build
+        cmake --build . --config Release --target YimMenu -- /m
+        
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: YimMenu-Build
+        path: YimMenuV2/build/Release/YimMenu.dll
