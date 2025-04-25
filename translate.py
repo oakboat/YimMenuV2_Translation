@@ -15,7 +15,7 @@ def load_cache():
             with open(CACHE_FILE, 'r', encoding='utf-8') as f:
                 translation_cache = json.load(f)
         except Exception as e:
-            print(f"加载缓存失败: {e}")
+            print(f"Load cache failed: {e}")
             translation_cache = {}
 
 def translate(query):
@@ -67,7 +67,7 @@ def process_directory(input_dir, output_dir=None):
                     output_root = os.path.join(output_dir, rel_path)
                     os.makedirs(output_root, exist_ok=True)
                     output_path = os.path.join(output_root, file)
-                print(f"处理文件: {input_path} -> {output_path}")
+                print(f"Process file: {input_path} -> {output_path}")
                 process_file(input_path, output_path)
 # 主程序
 if __name__ == '__main__':

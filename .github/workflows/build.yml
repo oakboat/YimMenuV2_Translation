@@ -28,7 +28,6 @@ jobs:
         cp ../*.TTF .
         cp ../*.diff .
         git apply stage.diff
-        chcp 65001
         python font.py
         mv MainFont.cpp src/game/frontend/fonts -Force
         python translate.py
