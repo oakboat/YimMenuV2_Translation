@@ -40,8 +40,6 @@ jobs:
     - name: Configure CMake
       run: |
         cd YimMenuV2
-        mkdir build
-        cd build
         cmake -D CMAKE_BUILD_TYPE=Release -S. -Bbuild -G Ninja
         
     - name: Build
