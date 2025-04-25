@@ -33,9 +33,9 @@ jobs:
         python translate.py
     
     - name: Setup MSVC environment
-        uses: ilammy/msvc-dev-cmd@v1
-        with:
-          arch: amd64
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: amd64
 
     - name: Configure CMake
       run: |
