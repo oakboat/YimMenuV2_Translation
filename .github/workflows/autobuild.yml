@@ -14,6 +14,12 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Convert LF to CRLF
+      run: |
+        git config --global core.autocrlf true
+        git rm --cached -r .
+        git reset --hard
       
     - name: Clone YimMenuV2
       run: |
