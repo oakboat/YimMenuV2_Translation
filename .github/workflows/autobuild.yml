@@ -1,0 +1,76 @@
+name: Auto Build
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 时间午夜运行
+  workflow_dispatch:      # 允许手动触发
+jobs:
+  create-release:
+    name: Auto Build
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Clone YimMenuV2
+      run: |
+        git clone --recursive https://github.com/YimMenu/YimMenuV2.git
+
+    - name: Patch YimMenuV2
+      run: |
+        cd YimMenuV2
+        cp ../*.py .
+        cp ../*.TTF .
+        cp ../*.diff .
+        dos2unix patch.diff
+        git apply patch.diff
+        python font.py
+        mv MainFont.cpp src/game/frontend/fonts -Force
+
+    - name: Translate YimMenuV2
+      run: |
+        python update_translation.py
+        python translate.py
+    
+    - name: Setup MSVC environment
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: amd64
+
+    - name: Generate CMake project
+      run: |
+        cd YimMenuV2
+        cmake -D CMAKE_BUILD_TYPE=Release -S. -Bbuild -G Ninja
+        
+    - name: Build 64bit release DLL
+      run: |
+        cd YimMenuV2
+        cmake --build ./build --config Release --target YimMenuV2 --
+
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: latest
+        overwrite: true
+        name: Autobuild
+        body: |
+          Automatic build of YimMenu
+          Commit: ${{ github.sha }}
+        draft: false
+        prerelease: false
+        files: |
+          YimMenuV2/build/YimMenuV2.dll
+    
+    - name: Commit and update translation
+      run: |
+        git config user.name "github-actions"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add translation.json
+        git commit -m "Automated update"
+        git push
