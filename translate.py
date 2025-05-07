@@ -6,7 +6,7 @@ import re
 translation_cache = {}
 
 # 缓存文件路径
-CACHE_FILE = 'translation_cache.json'
+CACHE_FILE = 'translation.json'
 
 def load_cache():
     global translation_cache
@@ -21,7 +21,10 @@ def load_cache():
 def translate(query):
     # 检查缓存
     if query in translation_cache:
-        return translation_cache[query]
+        translation_text = translation_cache[query]
+        if  translation_text.startswith('[TR]'):
+            return query
+        return translation_text
     
     return query
 
@@ -75,5 +78,5 @@ if __name__ == '__main__':
     load_cache()
     
     # 处理目录
-    process_directory("src/game/frontend")
-    process_directory("src/game/features")
+    process_directory("YimMenuV2/src/game/frontend")
+    process_directory("YimMenuV2/src/game/features")
