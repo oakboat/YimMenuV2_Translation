@@ -58,3 +58,22 @@ index 462a108..7ec4656 100644
 +	extern const uint8_t MainFont[1894471];
  }
 \ No newline at end of file
+diff --git a/src/game/backend/AnticheatBypass.cpp b/src/game/backend/AnticheatBypass.cpp
+index 950a75a..2fd8126 100644
+--- a/src/game/backend/AnticheatBypass.cpp
++++ b/src/game/backend/AnticheatBypass.cpp
+@@ -46,12 +46,12 @@ namespace YimMenu
+ 		if (m_BattlEyeRunning)
+ 			LOGF(WARNING, "If you are not running an actual BattlEye bypass, exit the game immediately and ensure that BE is properly disabled");
+ 
+-		if (!m_IsFSLLoaded)
++		if (!m_IsFSLLoaded && !m_BattlEyeRunning)
+ 			Pointers.BattlEyeStatusUpdatePatch->Apply();
+ 
+ 		while (true)
+ 		{
+-			if (!m_IsFSLLoaded)
++			if (!m_IsFSLLoaded && !m_BattlEyeRunning)
+ 			{
+ 				*Pointers.BERestartStatus = 0;
+ 				*Pointers.NeedsBERestart = false;
