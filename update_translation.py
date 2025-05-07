@@ -159,7 +159,7 @@ def process_directory(input_dir, output_dir=None):
                     output_root = os.path.join(output_dir, rel_path)
                     os.makedirs(output_root, exist_ok=True)
                     output_path = os.path.join(output_root, file)
-                print(f"处理文件: {input_path} -> {output_path}")
+                print(f"Process file: {input_path} -> {output_path}")
                 process_file(input_path, output_path)
 # 主程序
 if __name__ == '__main__':
