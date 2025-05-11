@@ -534,5 +534,8 @@
   "Peds Ignore": "行人无视",
   "Nearby peds will ignore you and become oblivious to your actions.": "附近的行人会无视你并对你的行为毫无反应",
   "Riot Mode": "暴动模式",
-  "All PEDs attack each other.": "所有行人会互相攻击"
+  "All PEDs attack each other.": "所有行人会互相攻击",
+  "Error: Player not found": "[TR]Error: Player not found",
+  "Randomize Outfit": "[TR]Randomize Outfit",
+  "Outfit Editor": "[TR]Outfit Editor"
 }
