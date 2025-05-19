@@ -537,5 +537,10 @@
   "All PEDs attack each other.": "所有行人会互相攻击",
   "Error: Player not found": "[TR]Error: Player not found",
   "Randomize Outfit": "[TR]Randomize Outfit",
-  "Outfit Editor": "[TR]Outfit Editor"
+  "Outfit Editor": "[TR]Outfit Editor",
+  "Stack Pointer: 0x%p": "[TR]Stack Pointer: 0x%p",
+  "Program Counter: 0x%p": "[TR]Program Counter: 0x%p",
+  "Transactions are not supported with FSL local saves enabled": "[TR]Transactions are not supported with FSL local saves enabled",
+  "Cheater Pool": "[TR]Cheater Pool",
+  "Matchmaking will put you into sessions with other YimMenu users.": "[TR]Matchmaking will put you into sessions with other YimMenu users."
 }
