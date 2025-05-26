@@ -566,5 +566,9 @@
   "Spawn Object": "[TR]Spawn Object",
   "Spawns an object at your current location.": "[TR]Spawns an object at your current location.",
   "Fix All Vehicles": "[TR]Fix All Vehicles",
-  "Fixes all of your destroyed personal vehicles.": "[TR]Fixes all of your destroyed personal vehicles."
+  "Fixes all of your destroyed personal vehicles.": "[TR]Fixes all of your destroyed personal vehicles.",
+  "Run Speed": "[TR]Run Speed",
+  "Run speed (in m/s)": "[TR]Run speed (in m/s)",
+  "Sprint Speed": "[TR]Sprint Speed",
+  "Sprint speed (in m/s)": "[TR]Sprint speed (in m/s)"
 }
