@@ -26,7 +26,7 @@ jobs:
         cp ../*.TTF .
         cp ../*.diff .
         dos2unix patch.diff
-        git apply patch.diff
+        git apply patch.diff || exit 1
         python font.py
         mv MainFont.cpp src/game/frontend/fonts -Force
 
