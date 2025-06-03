@@ -596,5 +596,13 @@
   "Set Time": "设置时间",
   "Sets the current online time": "设置当前在线时间",
   "Freeze Time": "冻结时间",
-  "Freezes the online clock at the selected time": "将在线时钟锁定在选定时间"
+  "Freezes the online clock at the selected time": "将在线时钟锁定在选定时间",
+  "##weaponspopup": "[TR]##weaponspopup",
+  "Search:": "[TR]Search:",
+  "##searchweapon": "[TR]##searchweapon",
+  "Give Weapon": "[TR]Give Weapon",
+  "Remove Weapon": "[TR]Remove Weapon",
+  "Ammu-Nation": "[TR]Ammu-Nation",
+  "Open Gun Locker": "[TR]Open Gun Locker",
+  "Allows you to access gun locker remotely.": "[TR]Allows you to access gun locker remotely."
 }
