@@ -632,5 +632,11 @@
   "Join YimMenu-only Sessions": "[TR]Join YimMenu-only Sessions",
   "Override RP Multiplier": "[TR]Override RP Multiplier",
   "Unlock GTA+": "[TR]Unlock GTA+",
-  "Force-unlocks GTA+ content. Use with caution": "[TR]Force-unlocks GTA+ content. Use with caution"
+  "Force-unlocks GTA+ content. Use with caution": "[TR]Force-unlocks GTA+ content. Use with caution",
+  "Play with everyone (Broken!)": "[TR]Play with everyone (Broken!)",
+  "Player ped not found": "[TR]Player ped not found",
+  "##{}drawable": "[TR]##{}drawable",
+  "##{}texture": "[TR]##{}texture",
+  "##pdrawable": "[TR]##pdrawable",
+  "##ptexture": "[TR]##ptexture"
 }
