@@ -706,5 +706,18 @@
   "Alloy": "合金",
   "Vehicle Editor": "载具编辑器",
   "Silence Phone Calls": "静默来电",
-  "Automatically silences all incoming calls. Use with caution": "自动静默所有来电。谨慎使用"
+  "Automatically silences all incoming calls. Use with caution": "自动静默所有来电。谨慎使用",
+  "Draw Special Objects": "[TR]Draw Special Objects",
+  "Should the ESP draw special objects?": "[TR]Should the ESP draw special objects?",
+  "Show Object Network Info": "[TR]Show Object Network Info",
+  "Show Object Script Info": "[TR]Show Object Script Info",
+  "Show Object Distance": "[TR]Show Object Distance",
+  "Object Hash Color": "[TR]Object Hash Color",
+  "Changes the color of the hash ESP for objects": "[TR]Changes the color of the hash ESP for objects",
+  "Object ESP": "[TR]Object ESP",
+  "Automatically silences all incoming calls": "[TR]Automatically silences all incoming calls",
+  "Teleport to Objective": "[TR]Teleport to Objective",
+  "Teleports you to the Objective": "[TR]Teleports you to the Objective",
+  "Delete All Cameras": "[TR]Delete All Cameras",
+  "Deletes all cameras": "[TR]Deletes all cameras"
 }
