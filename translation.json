@@ -719,5 +719,7 @@
   "Teleport to Objective": "[TR]Teleport to Objective",
   "Teleports you to the Objective": "[TR]Teleports you to the Objective",
   "Delete All Cameras": "[TR]Delete All Cameras",
-  "Deletes all cameras": "[TR]Deletes all cameras"
+  "Deletes all cameras": "[TR]Deletes all cameras",
+  "Should the ESP draw random events?": "[TR]Should the ESP draw random events?",
+  "Network Bail": "[TR]Network Bail"
 }
