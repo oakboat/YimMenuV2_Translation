@@ -8,6 +8,9 @@ translation_cache = {}
 # 缓存文件路径
 CACHE_FILE = 'translation.json'
 
+# 跟踪使用过的翻译
+used_translations = set()
+
 def load_cache():
     global translation_cache
     if os.path.exists(CACHE_FILE):
@@ -18,7 +21,25 @@ def load_cache():
             print(f"Load cache failed: {e}")
             translation_cache = {}
 
+def save_cache():
+    try:
+        # 清理未使用的翻译
+        cleaned_cache = {}
+        for key in used_translations:
+            if key in translation_cache:
+                cleaned_cache[key] = translation_cache[key]
+        
+        # 保存清理后的缓存
+        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(cleaned_cache, f, ensure_ascii=False, indent=2)
+        print(f"Cache saved with {len(cleaned_cache)} entries")
+    except Exception as e:
+        print(f"Save cache failed: {e}")
+
 def translate(query):
+    # 标记此翻译已使用
+    used_translations.add(query)
+    
     # 检查缓存
     if query in translation_cache:
         translation_text = translation_cache[query]
@@ -40,11 +61,8 @@ def process_file(file_path, output_path=None):
     )
 
     def replace_match(match):
-        text = match.group(1)      # 函数名
-        
+        text = match.group(1)
         translated = translate(text)
-        
-        # 构造替换后的字符串，保持原始括号类型
         return f'"{translated}"'
 
     new_content = pattern.sub(replace_match, content)
@@ -80,3 +98,6 @@ if __name__ == '__main__':
     # 处理目录
     process_directory("YimMenuV2/src/game/frontend")
     process_directory("YimMenuV2/src/game/features")
+
+    # 保存缓存
+    save_cache()
