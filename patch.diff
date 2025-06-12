@@ -12,40 +12,38 @@ index 48a1869..647d454 100644
  set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
  
 diff --git a/src/core/frontend/manager/UIManager.cpp b/src/core/frontend/manager/UIManager.cpp
-index f0004d8..5ed158f 100644
+index 1bc025b..abcb51d 100644
 --- a/src/core/frontend/manager/UIManager.cpp
 +++ b/src/core/frontend/manager/UIManager.cpp
 @@ -31,7 +31,7 @@ namespace YimMenu
  		}
  		ImGui::EndChild();
- 		
+ 
 -		ImGui::Text("YimMenuV2");
 +		ImGui::Text("大助手汉化");
  
  		pos.y -= 28;
  		ImGui::SetCursorPos(ImVec2(pos.x + 130, pos.y));
 diff --git a/src/game/frontend/Menu.cpp b/src/game/frontend/Menu.cpp
-index f392acc..a20fa0a 100644
+index 00211aa..9a43258 100644
 --- a/src/game/frontend/Menu.cpp
 +++ b/src/game/frontend/Menu.cpp
-@@ -119,11 +119,12 @@ namespace YimMenu
+@@ -137,12 +137,12 @@ namespace YimMenu
  		ImFontConfig FontCfg{};
  		FontCfg.FontDataOwnedByAtlas = false;
  
--		Menu::Font::g_DefaultFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_DefaultFontSize, &FontCfg);
--		Menu::Font::g_OptionsFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_OptionsFontSize, &FontCfg);
--		Menu::Font::g_ChildTitleFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_ChildTitleFontSize, &FontCfg);
--		Menu::Font::g_ChatFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_ChatFontSize, &FontCfg);
--		Menu::Font::g_OverlayFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_OverlayFontSize, &FontCfg);
-+		auto glyph = IO.Fonts->GetGlyphRangesChineseFull();
-+		Menu::Font::g_DefaultFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_DefaultFontSize, &FontCfg, glyph);
-+		Menu::Font::g_OptionsFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_OptionsFontSize, &FontCfg, glyph);
-+		Menu::Font::g_ChildTitleFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_ChildTitleFontSize, &FontCfg, glyph);
-+		Menu::Font::g_ChatFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_ChatFontSize, &FontCfg, glyph);
-+		Menu::Font::g_OverlayFont = IO.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), Menu::Font::g_OverlayFontSize, &FontCfg, glyph);
- 		UIManager::SetOptionsFont(Menu::Font::g_OptionsFont);
+-		auto font = io.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), size, &FontCfg, io.Fonts->GetGlyphRangesDefault());
++		auto font = io.Fonts->AddFontFromMemoryTTF(const_cast<std::uint8_t*>(Fonts::MainFont), sizeof(Fonts::MainFont), size, &FontCfg, io.Fonts->GetGlyphRangesChineseFull());
+ 
+ 		// just use Arial for Cyrillic
+ 
+-		FontCfg.MergeMode = true;
+-		io.Fonts->AddFontFromFileTTF((std::filesystem::path(std::getenv("SYSTEMROOT")) / "Fonts" / "arial.ttf").string().c_str(), size, &FontCfg, GetGlyphRangesCyrillicOnly());
++		//FontCfg.MergeMode = true;
++		//io.Fonts->AddFontFromFileTTF((std::filesystem::path(std::getenv("SYSTEMROOT")) / "Fonts" / "arial.ttf").string().c_str(), size, &FontCfg, GetGlyphRangesCyrillicOnly());
+ 
+ 		return font;
  	}
- }
 diff --git a/src/game/frontend/fonts/Fonts.hpp b/src/game/frontend/fonts/Fonts.hpp
 index 462a108..7ec4656 100644
 --- a/src/game/frontend/fonts/Fonts.hpp
