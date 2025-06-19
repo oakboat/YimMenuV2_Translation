@@ -1,6 +1,7 @@
 import json
 import re
 import os
+from collections import OrderedDict
 
 # 翻译缓存字典
 translation_cache = {}
@@ -14,7 +15,7 @@ def load_cache():
     if os.path.exists(CACHE_FILE):
         try:
             with open(CACHE_FILE, 'r', encoding='utf-8') as f:
-                translation_cache = json.load(f)
+                translation_cache = json.load(f, object_pairs_hook=OrderedDict)
         except Exception as e:
             print(f"加载缓存失败: {e}")
             translation_cache = {}

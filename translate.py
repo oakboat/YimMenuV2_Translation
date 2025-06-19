@@ -25,9 +25,9 @@ def load_cache():
 def save_cache():
     try:
         # 清理未使用的翻译
-        cleaned_cache = {}
-        for key in used_translations:
-            if key in translation_cache:
+        cleaned_cache = OrderedDict()
+        for key in translation_cache:  # 保持原始顺序
+            if key in used_translations:
                 cleaned_cache[key] = translation_cache[key]
         
         # 保存清理后的缓存
